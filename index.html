@@ -326,7 +326,14 @@
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = translated;
           } else {
-            el.textContent = translated;
+            if (el.classList.contains("footer-btn") && el.querySelector(".dropdown")) {
+  // Ne change que le premier texte sans supprimer .dropdown
+  const parts = translated.split("▾");
+  el.firstChild.textContent = parts[0].trim() + " ▾";
+} else {
+  el.textContent = translated;
+}
+
           }
         }
       });
