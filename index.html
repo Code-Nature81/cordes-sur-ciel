@@ -68,30 +68,11 @@
     }
 
     /* ----- IMAGE ----- */
-    figure.hero-figure {
-      margin: 0;
-      position: relative;
-    }
-
     .hero-image {
       width: 100%;
       max-height: 300px;
       object-fit: cover;
       display: block;
-    }
-
-    figcaption {
-      background-color: rgba(107, 78, 61, 0.7); /* couleur brune semi-transparente */
-      color: white;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.5rem;
-      text-align: right;
-      font-style: italic;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      box-sizing: border-box;
     }
 
     /* ----- MAIN ----- */
@@ -119,45 +100,30 @@
     }
 
     /* ----- FOOTER ----- */
-    /* ----- FOOTER NAVIGATION ----- */
-.footer-nav {
-  background: #6b4e3d;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0.7rem 0.5rem;
-  position: fixed;
-  bottom: 35px; /* espace pour footer-legal */
-  width: 100%;
-  z-index: 10;
-}
+    footer {
+      background: #6b4e3d;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 0.7rem 0.5rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 10;
+    }
 
-/* ----- BOUTONS FOOTER ----- */
-.footer-btn {
-  color: white;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-  position: relative;
-  margin: 0.3rem;
-  flex: 1 1 40%;
-  text-align: center;
-  padding: 0.5rem;
-}
-
-/* ----- FOOTER LÉGAL ----- */
-.footer-legal {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #4e3627;
-  text-align: center;
-  padding: 0.rem 0;
-  font-size: 0.8rem;
-  color: white;
-  z-index: 5;
-}
+    .footer-btn {
+      color: white;
+      background: none;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      position: relative;
+      margin: 0.3rem;
+      flex: 1 1 40%;
+      text-align: center;
+      padding: 0.5rem;
+    }
 
     .footer-btn:hover {
       text-decoration: underline;
@@ -194,10 +160,6 @@
     a {
       text-decoration: none;
     }
-
-  
-
-
 
     /* ----- RESPONSIVE ----- */
     @media (max-width: 600px) {
@@ -236,15 +198,7 @@
         transform: translateX(-50%);
         bottom: 3.5rem;
       }
-
-      figcaption {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
-        text-align: center;
-      }
     }
-
-    
   </style>
 </head>
 <body>
@@ -255,9 +209,7 @@
       <img src="Blason.svg" alt="Logo Cordes-sur-Ciel" class="logo"/>
       <div class="header-text">
         <h1>Cordes-sur-Ciel</h1>
-        <p data-fr="Un joyau médiéval suspendu entre ciel et terre" data-en="A medieval jewel between sky and earth">
-          Un joyau médiéval suspendu entre ciel et terre
-        </p>
+        <p data-fr="Un joyau médiéval suspendu entre ciel et terre" data-en="A medieval jewel between sky and earth">Un joyau médiéval suspendu entre ciel et terre</p>
       </div>
       <div class="language-switch">
         <span onclick="switchLanguage('fr')">FR</span> | 
@@ -266,13 +218,8 @@
     </div>
   </header>
 
-  <!-- IMAGE avec figcaption -->
-  <figure class="hero-figure">
-    <img class="hero-image" src="cordes.jpg" alt="Vue de Cordes-sur-Ciel" />
-    <figcaption data-fr="Photo : @lain G / CC BY-SA 2.0. (Flickr)" data-en="Photo: @lain G / CC BY-SA 2.0 (Flickr)">
-      Photo : @lain G / CC BY-SA 2.0. (Flickr)
-    </figcaption>
-  </figure>
+  <!-- IMAGE -->
+  <img class="hero-image" src="cordes.jpg" alt="Vue de Cordes-sur-Ciel" />
 
   <!-- MAIN -->
   <main>
@@ -285,51 +232,27 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="footer-nav">
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/monuments'"
-      data-fr="Monuments" data-en="Monuments">Monuments</button>
-    
-    <button class="footer-btn" onclick="location.href='https://umap.openstreetmap.fr/fr/map/cordes-artisansartistes_863178#16/44.0645/1.9542'"
-      data-fr="Artisans / Artistes" data-en="Craftsmen / Artists">Artisans / Artistes</button>
-    
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/hebergements'"
-      data-fr="Hébergements / Restauration" data-en="Accommodation / Food">Hébergements / Restaurations</button>
-    
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/commercants'"
-      data-fr="Commerçants" data-en="Shops">Commerçants</button>
-
-    <div class="footer-btn" data-fr="Plus ▾" data-en="More ▾">Plus ▾
+  <footer>
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/monuments'">Monuments</button>
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/artisans'">Artisans / Artistes</button>
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/hebergements'">Hébergements / Restauration</button>
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/commercants'">Commerçants</button>
+    <div class="footer-btn">
+      Plus ▾
       <div class="dropdown">
-        <a href="https://cordes-sur-ciel.fr/randonnees"
-           data-fr="Randonnées" data-en="Hiking">Randonnées</a>
-        <a href="https://cordes-sur-ciel.fr/vtt"
-           data-fr="VTT" data-en="Mountain Biking">VTT</a>
-        <a href="https://cordes-sur-ciel.fr/evenements"
-           data-fr="Événements" data-en="Events">Événements</a>
+        <a href="https://cordes-sur-ciel.fr/randonnees">Randonnées</a>
+        <a href="https://cordes-sur-ciel.fr/vtt">VTT</a>
+        <a href="https://cordes-sur-ciel.fr/evenements">Événements</a>
       </div>
     </div>
   </footer>
-
-  <!-- FOOTER LÉGAL -->
-  <div class="footer-legal">
-    <p data-fr="Code Nature - Tous droits réservés ©" data-en="Code Nature - All rights reserved ©">
-      <a href="https://www.codenature.fr/" style="text-decoration: none; color:#9f8373;"><u>Code Nature</u> - Tous droits réservés © </a>
-    </p>
-  </div>
 
   <!-- JS Langue -->
   <script>
     function switchLanguage(lang) {
       const elements = document.querySelectorAll('[data-fr]');
       elements.forEach(el => {
-        const translated = el.getAttribute(`data-${lang}`);
-        if (translated !== null) {
-          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-            el.placeholder = translated;
-          } else {
-            el.textContent = translated;
-          }
-        }
+        el.textContent = el.getAttribute(`data-${lang}`);
       });
     }
   </script>
