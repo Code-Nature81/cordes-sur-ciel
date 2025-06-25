@@ -2,30 +2,35 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>Cordes-sur-Ciel - Village Touristique</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet"/>
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #f5f3e7, #eae0d5);
+      overflow: hidden; /* empêche scroll vertical */
     }
 
     body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom, #f5f3e7, #eae0d5);
-      color: #333;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+    
+      
     }
 
     header {
       background: #6b4e3d;
       color: white;
-      padding: 0.8rem 1rem;
+      padding: 0.5rem;
       text-align: center;
-      position: relative;
       z-index: 10;
     }
 
@@ -37,8 +42,7 @@
     }
 
     .logo {
-      width: 60px;
-      height: auto;
+      width: 50px;
     }
 
     .header-text {
@@ -48,87 +52,96 @@
 
     .header-text h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin: 0.2rem 0;
-      word-break: break-word;
     }
 
     .header-text p {
-      font-size: 1rem;
-      margin: 0;
+      font-size: 0.6rem;
     }
 
     .language-switch {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       cursor: pointer;
     }
 
     .language-switch span {
-      margin: 0 0.3rem;
+      margin: 0 0.2rem;
       text-decoration: underline;
     }
 
-    figure.hero-figure {
-      margin: 0;
+    .hero-figure {
       position: relative;
-      top: 0;
+      height: 35vh;
+      overflow: hidden;
     }
 
     .hero-image {
       width: 100%;
-      max-height: 300px;
+      height: 90%;
       object-fit: cover;
-      display: block;
-      margin-top: 0px;
     }
 
+    .hero-background {
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 9; /* ou adapte selon ta photo réelle */
+  background-image: url('cordes.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-color: #ccc; /* couleur de fond si l'image ne remplit pas toute la largeur */
+  position: relative;
+  width: 100%;
+}
+
+
     figcaption {
-      background-color: rgba(107, 78, 61, 0.7);
+      background-color: rgba(107, 78, 61, 0.6);
       color: white;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.5rem;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
       text-align: right;
       font-style: italic;
       position: absolute;
-      bottom: 0;
-      right: 0;
+      bottom: 20px;
       width: 100%;
-      box-sizing: border-box;
     }
 
-    main {
-      flex: 1;
-      padding: 1.5rem 1rem 4rem;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-      z-index: 10;
-      margin-top: -30px;
-    }
+   .welcome-section {
+  position: absolute;
+  top: 42vh; /* fait apparaître la section au bas de l'image */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: rgba(255, 255, 255, 0); /* fond semi-transparent */
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0);
+  z-index: 5;
+  text-align: center;
+}
 
-    .welcome h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.8rem;
-    }
+.welcome-section h2 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  color: #3d2f26;
+}
 
-    .welcome p {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+.welcome-section p {
+  font-size: 0.9rem;
+  color: #333;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
 
-    .footer-nav {
+    footer.footer-nav {
       background: #6b4e3d;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      padding: 0.7rem 0.5rem;
-      position: fixed;
-      bottom: 35px;
+      padding: 0.5rem;
+      position: absolute;
+      bottom: 1.4rem;
       width: 100%;
       z-index: 10;
     }
@@ -137,25 +150,12 @@
       color: white;
       background: none;
       border: none;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
       position: relative;
-      margin: 0.3rem;
       flex: 1 1 40%;
       text-align: center;
-      padding: 0.5rem;
-    }
-
-    .footer-legal {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background-color: #4e3627;
-      text-align: center;
-      padding: 0.2rem 0;
-      font-size: 0.8rem;
-      color: white;
-      z-index: 5;
+      padding: 0.4rem;
     }
 
     .footer-btn:hover {
@@ -165,19 +165,19 @@
     .dropdown {
       display: none;
       position: absolute;
-      bottom: 2.5rem;
+      bottom: 2rem;
       background-color: #f3ede1;
       color: #333;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
       border-radius: 8px;
-      min-width: 160px;
+      min-width: 150px;
       text-align: left;
       z-index: 999;
     }
 
     .dropdown a {
       display: block;
-      padding: 0.6rem 1rem;
+      padding: 0.5rem 0.8rem;
       text-decoration: none;
       color: #333;
     }
@@ -190,56 +190,43 @@
       display: block;
     }
 
+    .footer-legal {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #4e3627;
+      text-align: center;
+      font-size: 0.7rem;
+      color: white;
+      padding: 0.3rem;
+      z-index: 5;
+    }
+
     a {
       text-decoration: none;
     }
 
     @media (max-width: 600px) {
-      .header-container {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .logo {
-        width: 50px;
-        margin-bottom: 0.5rem;
-      }
-
-      .header-text h1 {
-        font-size: 1.6rem;
-        text-align: center;
-      }
-
-      .header-text p {
-        font-size: 0.9rem;
-        text-align: center;
-      }
-
-      .welcome h2 {
-        font-size: 1.5rem;
-      }
-
       .footer-btn {
         flex: none;
         width: 90%;
-        font-size: 1rem;
+        margin: 0.2rem auto;
       }
 
       .dropdown {
         left: 50%;
         transform: translateX(-50%);
-        bottom: 3.5rem;
-      }
-
-      figcaption {
-        font-size: 0.7rem;
-        padding: 0.2rem 0.4rem;
-        text-align: center;
       }
     }
+
+  
+
+   
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
     <div class="header-container">
       <img src="Blason.svg" alt="Logo Cordes-sur-Ciel" class="logo"/>
@@ -256,6 +243,7 @@
     </div>
   </header>
 
+  <!-- IMAGE -->
   <figure class="hero-figure">
     <img class="hero-image" src="cordes.jpg" alt="Vue de Cordes-sur-Ciel" />
     <figcaption data-fr="Photo : @lain G / CC BY-SA 2.0. (Flickr)" data-en="Photo: @lain G / CC BY-SA 2.0 (Flickr)">
@@ -263,20 +251,32 @@
     </figcaption>
   </figure>
 
-  <main>
-    <div class="welcome">
-      <h2 data-fr="Bienvenue à Cordes-sur-Ciel" data-en="Welcome to Cordes-sur-Ciel">Bienvenue à Cordes-sur-Ciel</h2>
-      <p data-fr="Découvrez nos ruelles chargées d’histoire, nos artisans d’art, notre gastronomie locale, nos événements culturels et nos sentiers de randonnée." data-en="Explore our historic alleys, local artisans, fine cuisine, cultural events and scenic hiking trails.">
-        Découvrez nos ruelles chargées d’histoire, nos artisans d’art, notre gastronomie locale, nos événements culturels et nos sentiers de randonnée.
-      </p>
-    </div>
-  </main>
+  <!-- MAIN -->
+ <section class="welcome-section">
+  <div class="welcome">
+    <h2 data-fr="Bienvenue à Cordes-sur-Ciel" data-en="Welcome to Cordes-sur-Ciel">
+      Bienvenue à Cordes-sur-Ciel
+    </h2>
+    <p data-fr="Découvrez nos ruelles chargées d’histoire, nos artisans d’art, notre gastronomie locale, nos événements culturels et nos sentiers de randonnée." 
+       data-en="Explore our historic alleys, local artisans, fine cuisine, cultural events and scenic hiking trails.">
+      Découvrez nos ruelles chargées d’histoire, nos artisans d’art, notre gastronomie locale, nos événements culturels et nos sentiers de randonnée.
+    </p>
+  </div>
+</section>
 
+  <!-- FOOTER -->
   <footer class="footer-nav">
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/monuments'" data-fr="Monuments" data-en="Monuments">Monuments</button>
-    <button class="footer-btn" onclick="location.href='https://umap.openstreetmap.fr/fr/map/cordes-artisansartistes_863178#16/44.0645/1.9542'" data-fr="Artisans / Artistes" data-en="Craftsmen / Artists">Artisans / Artistes</button>
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/hebergements'" data-fr="Hébergements / Restauration" data-en="Accommodation / Food">Hébergements / Restaurations</button>
-    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/commercants'" data-fr="Commerçants" data-en="Shops">Commerçants</button>
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/monuments'"
+      data-fr="Monuments" data-en="Monuments">Monuments</button>
+    
+    <button class="footer-btn" onclick="location.href='https://umap.openstreetmap.fr/fr/map/cordes-artisansartistes_863178#16/44.0645/1.9542'"
+      data-fr="Artisans / Artistes" data-en="Craftsmen / Artists">Artisans / Artistes</button>
+    
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/hebergements'"
+      data-fr="Hébergements / Restauration" data-en="Accommodation / Food">Hébergements / Restaurations</button>
+    
+    <button class="footer-btn" onclick="location.href='https://cordes-sur-ciel.fr/commercants'"
+      data-fr="Commerçants" data-en="Shops">Commerçants</button>
 
     <div class="footer-btn" data-fr="Plus ▾" data-en="More ▾">Plus ▾
       <div class="dropdown">
@@ -287,13 +287,14 @@
     </div>
   </footer>
 
+  <!-- FOOTER LÉGAL -->
   <div class="footer-legal">
     <p data-fr="Code Nature - Tous droits réservés ©" data-en="Code Nature - All rights reserved ©">
-      <a href="https://www.codenature.fr/" style="text-decoration: none; color:#9f8373;"><u>Code Nature</u> - Tous droits réservés © </a>
+      <a href="https://www.codenature.fr/" style="text-decoration: none; color:#9f8373;">
+        <u>Code Nature</u> - Tous droits réservés ©
+      </a>
     </p>
   </div>
-
- 
 
   <script>
     function switchLanguage(lang) {
